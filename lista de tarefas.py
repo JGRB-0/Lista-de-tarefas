@@ -27,7 +27,7 @@ try:
         adicionar_tarefa(input(f'Digite a {i + 1}ª tarefa: ')) 
         contagem = contagem + 1
     contagem = contagem + 1 
-    # Verificar o que o usuário quer 
+    # Verificar o que o usuário quer em loop
     while y == False:
         questionamento = input('O que deseja no momento? ')
 
@@ -35,25 +35,25 @@ try:
         concluir_tarefas = ['riscar tarefa','concluir tarefa','marcar tarefa', 'concluida']
         finalizar_lista = ['finalizar', 'fechar', 'encerrar']
         nova_tarefa = ['adicionar', 'incrementar']
-
-
+    #Verifica se quer fechar a lista
         if questionamento.lower() in finalizar_lista:
             print('Lista Finalizada com sucesso!')
             break
-
+    #Verifica se quer adicionar novas tarefas
         if questionamento.lower() in nova_tarefa:
             qnt = int(input('Quantas novas tarefas gostaria de adicionar? '))
-            
+            #Adiciona novas tarefas a lista
             for n in range(qnt):           
                 adicionar_nova_tarefa = input(f'Digite a {n + 1}° nova tarefa: ')
                 with open('Lista.txt', 'a') as lista:
                     lista.write(f'{contagem}° -> {adicionar_nova_tarefa}\n')
                 contagem = contagem + 1
-
+        #Verifica se quer ver as tarefas na lista
         if (questionamento.lower() in ['ver tarefas','verificar tarefas', ' olhar status', 'olhar tarefas','ver lista','olhar lista']):
             with open('Lista.txt', 'r') as verificacao:
                 for item in verificacao:
                     print(item)
+        #Verifica se o usuario quer marcar tarefa como concluida            
         else:  
             x = 2
             for frases in concluir_tarefas:
